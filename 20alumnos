@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<conio.h>
+
+int main()
+{
+	int a=21, b=6;
+	int matriz[a][b], vector[21]={}, vector1[6]={};
+	int i, j;
+	float pa, pg;
+	
+	printf("Calificaciones de alumnos\n");
+	for(i=1; i<a; i++)
+	 for(j=1; j<b; j++){
+			printf("Alumno %d materia %d: ", i, j);
+			scanf("%d", &matriz[i][j]);
+			vector[i]=vector[i]+matriz[i][j];
+		}
+	
+	for(i=1; i<a; i++)
+	 for(j=1; j<b; j++){
+	 	vector1[j]=vector1[j]+matriz[i][j];
+	 }
+	
+	printf("Las calificaciones son:\n");
+	for(i=1;i<a;i++){
+		printf("Alumno %d:\t",i);
+		for(j=1;j<b;j++){
+			printf("%d ",matriz[i][j]);
+		}
+		printf("\n");
+	}
+	
+	printf("\n");
+	
+	printf("Promedio del alumno:\n");
+	for(i=1;i<a;i++){
+		printf("Alumno %d:\t",i);
+		pa=vector[i];
+		pa=pa/5;
+		printf("%.2f\n",pa);
+	}
+	printf("\n");
+	
+	printf("Promedio del grupo por materia\n");
+	for(i=1; i<b; i++){
+		pg=vector1[i];
+		pg=pg/20;
+		printf("%.2f\t",pg);
+	}
+	
+	printf("\n\n");
+	
+	printf("REPROBADOS\n");
+	for(i=1; i<a; i++){
+		pa=vector[i];
+		pa=pa/5;
+		if(pa<7){
+			printf("Alumno %d calificacion: %.2f\n",i,pa);
+		}
+	}
+	getch();
+	return 0;
+}
